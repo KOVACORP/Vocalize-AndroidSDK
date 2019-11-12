@@ -23,9 +23,7 @@ class HomeMainActivity : AppCompatActivity() {
 
             // Otherwise start the app as you would normally do.
             else -> {
-                tv_type?.let {
-                    it.text = "Nothing received"
-                }
+
             }
         }
     }
