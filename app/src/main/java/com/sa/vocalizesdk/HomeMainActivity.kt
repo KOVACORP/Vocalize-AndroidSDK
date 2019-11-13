@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sdk.vocalize.Vocalize
 import com.sdk.vocalize.VocalizeListener
-import kotlinx.android.synthetic.main.activity_main_home.*
 
 class HomeMainActivity : AppCompatActivity() {
 
@@ -30,14 +29,14 @@ class HomeMainActivity : AppCompatActivity() {
 
     private fun callMethod(intent: Intent?) {
         Vocalize.searchKeyword(intent?.data, object : VocalizeListener {
-            override fun onError(error: String) {
-
-            }
 
             override fun onSuccess() {
 
             }
 
+            override fun onError(error: String) {
+
+            }
         })
     }
 }
