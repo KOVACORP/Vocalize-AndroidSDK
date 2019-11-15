@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         tools:ignore="AllowBackup">
 
+        <activity
+            android:name="com.sdk.vocalize.terms.TermsActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+
         <!-- Add an indication where to find the actions.xml -->
         <meta-data
             android:name="com.google.android.actions"

@@ -32,7 +32,6 @@ android {
     }
 
     dataBinding {
-        //noinspection DataBindingWithoutKapt
         enabled = true
     }
 
@@ -41,6 +40,7 @@ android {
     productFlavors {
         prod {
             buildConfigField "String", 'BASE_URL', "\"https://api.vocalizemysite.com/api/v1/\""
+            buildConfigField "String", 'STATE_BASE_URL', "\"https://pro.ip-api.com/\""
         }
     }
 }
@@ -63,11 +63,13 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.16'
+    api 'io.reactivex.rxjava2:rxjava:2.1.16'
 
     api files('libs/managementlib.jar')
+
 }
 
 task deleteJar(type: Delete) {
@@ -75,7 +77,7 @@ task deleteJar(type: Delete) {
 }
 
 task createJar(type: Copy) {
-    from('build/intermediates/packaged-classes/release/')
+    from('build/intermediates/packaged-classes/prod/release/')
     into('libs/')
     include('classes.jar')
     rename('classes.jar', 'logmanagementlib.jar')
