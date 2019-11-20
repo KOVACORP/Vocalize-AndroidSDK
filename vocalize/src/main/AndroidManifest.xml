@@ -15,6 +15,7 @@
         <activity
             android:name="com.sdk.vocalize.terms.TermsActivity"
             android:noHistory="true"
+            android:theme="@style/AppTheme"
             android:screenOrientation="portrait" />
 
         <!-- Add an indication where to find the actions.xml -->

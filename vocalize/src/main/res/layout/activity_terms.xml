@@ -72,7 +72,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnDecline"
                 android:layout_width="@dimen/btn_with_terms"
                 android:layout_height="50dp"
                 android:layout_marginStart="15dp"
@@ -81,7 +81,6 @@
                 android:background="@drawable/btn_bg_white"
                 android:enabled="@{viewModel.btnEnabled}"
                 android:foreground="?selectableItemBackground"
-                android:onClick="@{viewModel::openConfirmationDialog}"
                 android:text="@string/btn_name_decline"
                 android:theme="@style/ButtonTheme.white"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -90,7 +89,7 @@
                 tools:targetApi="lollipop" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btnAccept"
                 android:layout_width="@dimen/btn_with_terms"
                 android:layout_height="50dp"
                 android:layout_marginTop="30dp"
@@ -98,7 +97,6 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/btn_bg_blue"
                 android:enabled="@{viewModel.btnEnabled}"
-                android:onClick="@{viewModel::acceptTerms}"
                 android:text="@string/btn_name_accept"
                 android:theme="@style/ButtonTheme.blue"
                 app:layout_constraintBottom_toBottomOf="parent"
