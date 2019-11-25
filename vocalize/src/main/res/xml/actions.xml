@@ -36,20 +36,21 @@
         <!-- For each entity you can specify the name, alternate names and the identifier -->
         <!-- The identifier is the value that will be added to the action uri. -->
         <!-- For our sample we map the supported entities with the class FitActivity.Type  -->
-        <entity
-            name="@string/activity_dancing"
-            alternateName="@array/dancingSynonyms"
-            identifier="DANCING" />
 
-        <entity
-            name="@string/activity_running"
-            alternateName="@array/runningSynonyms"
-            identifier="RUNNING" />
+        <!--        <entity-->
+        <!--            name="@string/activity_dancing"-->
+        <!--            alternateName="@array/dancingSynonyms"-->
+        <!--            identifier="DANCING" />-->
 
-        <entity
-            name="@string/activity_walking"
-            alternateName="@array/walkingSynonyms"
-            identifier="WALKING" />
+        <!--        <entity-->
+        <!--            name="@string/activity_running"-->
+        <!--            alternateName="@array/runningSynonyms"-->
+        <!--            identifier="RUNNING" />-->
+
+        <!--        <entity-->
+        <!--            name="@string/activity_walking"-->
+        <!--            alternateName="@array/walkingSynonyms"-->
+        <!--            identifier="WALKING" />-->
 
     </entity-set>
 

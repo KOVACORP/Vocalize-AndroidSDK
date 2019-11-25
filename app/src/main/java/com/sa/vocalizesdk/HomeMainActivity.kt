@@ -46,17 +46,7 @@ class HomeMainActivity : AppCompatActivity(), VocalizeInitializeListener {
                 101
             )
         } else {
-            Vocalize.initialize(this@HomeMainActivity, object : VocalizeInitializeListener {
-
-                override fun onInit() {
-
-                }
-
-                override fun onError(error: String) {
-
-                }
-
-            })
+            Vocalize.initialize(this@HomeMainActivity, this)
         }
     }
 
