@@ -4,23 +4,26 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
-apply plugin: 'kotlin-kapt'
-
 android {
     compileSdkVersion 29
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName project.getProperty("libraryVersion")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    sourceSets {
+        main.java.srcDirs += 'libs/jars'
+    }
+
     buildTypes {
 
-        debug{
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
             buildConfigField "String", 'BASE_URL', "\"https://api.vocalizemysite.com/api/v1/\""
             buildConfigField "String", 'STATE_BASE_URL', "\"https://pro.ip-api.com/\""
         }
@@ -28,6 +31,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
             buildConfigField "String", 'BASE_URL', "\"https://api.vocalizemysite.com/api/v1/\""
             buildConfigField "String", 'STATE_BASE_URL', "\"https://pro.ip-api.com/\""
         }
@@ -35,6 +39,11 @@ android {
 
     dataBinding {
         enabled = true
+    }
+
+    lintOptions {
+        abortOnError false
+        disable "Slices"
     }
 }
 
@@ -61,6 +70,21 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     api 'io.reactivex.rxjava2:rxjava:2.1.16'
 
+    api 'androidx.slice:slice-builders-ktx:1.0.0-alpha6'
+
     api files('libs/managementlib.jar')
 
 }
+
+task deleteJar(type: Delete) {
+    delete 'libs/jars/logmanagementlib.jar'
+}
+
+task createJar(type: Copy) {
+    from('build/intermediates/packaged-classes/prod/release/')
+    into('libs/')
+    include('classes.jar')
+    rename('classes.jar', 'logmanagementlib.jar')
+}
+
+createJar.dependsOn(deleteJar, build)

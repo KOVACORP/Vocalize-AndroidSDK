@@ -17,41 +17,25 @@
 
 <actions>
 
-    <!--open feature on vocalize-->
     <action intentName="actions.intent.OPEN_APP_FEATURE">
-        <fulfillment urlTemplate="https://vocalizemysite.vocalize.com/open{?featureName}">
+
+        <fulfillment
+            fulfillmentMode="actions.fulfillment.SLICE"
+            urlTemplate="https://vocalizemysite.vocalize.com/open{?featureName}">
+            <parameter-mapping
+                intentParameter="feature"
+                required="true"
+                urlParameter="featureName" />
+        </fulfillment>
+
+        <fulfillment
+            fulfillmentMode="actions.fulfillment.DEEPLINK"
+            urlTemplate="https://vocalizemysite.vocalize.com/open{?featureName}">
             <parameter-mapping
                 intentParameter="feature"
                 urlParameter="featureName" />
         </fulfillment>
 
-        <parameter name="feature">
-            <entity-set-reference entitySetId="ExerciseEntitySet" />
-        </parameter>
     </action>
-
-    <!-- Defines an entity set with our supported entities -->
-    <entity-set entitySetId="ExerciseEntitySet">
-
-        <!-- For each entity you can specify the name, alternate names and the identifier -->
-        <!-- The identifier is the value that will be added to the action uri. -->
-        <!-- For our sample we map the supported entities with the class FitActivity.Type  -->
-
-        <!--        <entity-->
-        <!--            name="@string/activity_dancing"-->
-        <!--            alternateName="@array/dancingSynonyms"-->
-        <!--            identifier="DANCING" />-->
-
-        <!--        <entity-->
-        <!--            name="@string/activity_running"-->
-        <!--            alternateName="@array/runningSynonyms"-->
-        <!--            identifier="RUNNING" />-->
-
-        <!--        <entity-->
-        <!--            name="@string/activity_walking"-->
-        <!--            alternateName="@array/walkingSynonyms"-->
-        <!--            identifier="WALKING" />-->
-
-    </entity-set>
 
 </actions>

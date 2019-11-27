@@ -8,21 +8,49 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name="com.sdk.vocalize.VocalizeApplication"
         android:allowBackup="true"
         android:supportsRtl="true"
         tools:ignore="AllowBackup">
+        <activity android:name="com.sdk.vocalize.MainActivity">
 
+            <!-- Define your supported deeplinks -->
+            <intent-filter
+                android:autoVerify="true"
+                tools:targetApi="m">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="vocalizemysite.vocalize.com"
+                    android:scheme="https" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name="com.sdk.vocalize.terms.TermsActivity"
             android:noHistory="true"
-            android:theme="@style/AppTheme"
             android:screenOrientation="portrait" />
 
-        <!-- Add an indication where to find the actions.xml -->
+        <provider
+            android:name="com.sdk.vocalize.AppActionsSliceProvider"
+            android:authorities="com.vocalizemysite.vocalize"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.app.slice.category.SLICE" />
+
+                <data
+                    android:host="vocalizemysite.vocalize.com"
+                    android:scheme="https" />
+            </intent-filter>
+        </provider> <!-- Add an indication where to find the actions.xml -->
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/actions" />
-
     </application>
 
 </manifest>
