@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.sdk.vocalize.VocalizeApplication"
         android:allowBackup="true"
         android:supportsRtl="true"
         tools:ignore="AllowBackup">
@@ -36,7 +35,7 @@
 
         <provider
             android:name="com.sdk.vocalize.AppActionsSliceProvider"
-            android:authorities="com.vocalizemysite.vocalize"
+            android:authorities="com.vocalizemysite.vocalize.slices.provider"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -48,6 +47,7 @@
                     android:scheme="https" />
             </intent-filter>
         </provider> <!-- Add an indication where to find the actions.xml -->
+
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/actions" />

@@ -6,16 +6,12 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.sdk.vocalize.Vocalize
-import com.sdk.vocalize.VocalizeInitializeListener
-import com.sdk.vocalize.models.StateModel
 
-class HomeMainActivity : AppCompatActivity(), VocalizeInitializeListener {
+class HomeMainActivity : AppCompatActivity() {
 
     @SuppressLint("ObsoleteSdkInt")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +42,7 @@ class HomeMainActivity : AppCompatActivity(), VocalizeInitializeListener {
                 101
             )
         } else {
-            Vocalize.initialize(this@HomeMainActivity, this)
+//            Vocalize.initialize(this@HomeMainActivity, this)
         }
     }
 
@@ -57,7 +53,7 @@ class HomeMainActivity : AppCompatActivity(), VocalizeInitializeListener {
     ) {
         if (requestCode == 101) {
             if (grantResults.size > 0 && grantResults.get(0) == PackageManager.PERMISSION_GRANTED) {
-                Vocalize.initialize(this@HomeMainActivity, this)
+//                Vocalize.initialize(this@HomeMainActivity, this)
             } else {
                 getPhonePermission()
             }
@@ -67,24 +63,24 @@ class HomeMainActivity : AppCompatActivity(), VocalizeInitializeListener {
 
     }
 
-    override fun onInit(states: ArrayList<StateModel>) {
-        // Get the action and data from the intent to handle it.
-        val action: String? = intent?.action
-        when (action) {
-            // When the action is triggered by a deep-link, Intent.Action_VIEW will be used
-            Intent.ACTION_VIEW -> callMethod(intent)
-
-            // Otherwise start the app as you would normally do.
-            else -> {
-
-            }
-        }
-    }
-
-    override fun onError(error: String) {
-        Log.e("Error=====>> ", error)
-        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
-    }
+//    override fun onInit(states: ArrayList<StateModel>) {
+//        // Get the action and data from the intent to handle it.
+//        val action: String? = intent?.action
+//        when (action) {
+//            // When the action is triggered by a deep-link, Intent.Action_VIEW will be used
+//            Intent.ACTION_VIEW -> callMethod(intent)
+//
+//            // Otherwise start the app as you would normally do.
+//            else -> {
+//
+//            }
+//        }
+//    }
+//
+//    override fun onError(error: String) {
+//        Log.e("Error=====>> ", error)
+//        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+//    }
 
     private fun callMethod(intent: Intent?) {
 //        Vocalize.searchKeyword(intent?.data, object : VocalizeListener {

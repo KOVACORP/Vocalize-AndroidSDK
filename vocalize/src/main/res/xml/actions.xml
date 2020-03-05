@@ -21,7 +21,7 @@
 
         <fulfillment
             fulfillmentMode="actions.fulfillment.SLICE"
-            urlTemplate="https://vocalizemysite.vocalize.com/open{?featureName}">
+            urlTemplate="content://com.vocalizemysite.vocalize.slices.provider/{?featureName}">
             <parameter-mapping
                 intentParameter="feature"
                 required="true"
@@ -30,7 +30,7 @@
 
         <fulfillment
             fulfillmentMode="actions.fulfillment.DEEPLINK"
-            urlTemplate="https://vocalizemysite.vocalize.com/open{?featureName}">
+            urlTemplate="https://vocalizemysite.vocalize.com/{?featureName}">
             <parameter-mapping
                 intentParameter="feature"
                 urlParameter="featureName" />
